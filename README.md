@@ -100,3 +100,31 @@ sistema_vehiculos.buscar_vehiculos_mayores_a(2019)
 # Buscar vehículos fabricados antes del año 2020
 sistema_vehiculos.buscar_vehiculos_menores_a(2020)
 ```
+## Atributos de Vehículo
+
+Cada instancia de la clase `Vehiculo` cuenta con los siguientes atributos:
+
+- **Marca**: Marca del vehículo (e.g., "Toyota").
+- **Modelo**: Modelo del vehículo (e.g., "Corolla").
+- **Año**: Año de fabricación del vehículo.
+- **Kilometraje**: Kilometraje recorrido por el vehículo.
+- **Estado Actual**: Estado actual del vehículo (e.g., "En buen estado").
+- **Tipo de Combustible**: Tipo de combustible utilizado por el vehículo (e.g., "Gasolina", "Diesel", "Eléctrico").
+- **Color**: Color del vehículo (e.g., "Rojo").
+
+### Ejemplo de Uso
+
+```python
+# Crear una instancia de Vehiculo con el nuevo atributo 'color'
+vehiculo = Vehiculo(
+    marca="Toyota",
+    modelo="Corolla",
+    año=2020,
+    kilometraje=25000,
+    estado_actual="En buen estado",
+    tipo_combustible="Gasolina",
+    color="Rojo"
+)
+
+# Obtener el color del vehículo
+print(f"El color del vehículo es: {vehiculo.get_color()}")
