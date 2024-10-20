@@ -2,8 +2,8 @@ from vehiculo import Vehiculo
 
 class Main:
     """
-    Clase que gestiona una lista de vehículos, permitiendo agregar vehículos
-    y buscarlos por año.
+    Clase que gestiona una lista de vehículos, permitiendo agregar vehículos,
+    buscarlos por año e imprimir todos los vehículos registrados.
 
     Atributos:
     ----------
@@ -54,24 +54,50 @@ class Main:
 
         return vehiculos_encontrados
 
+    def imprimir_vehiculos_registrados(self):
+        """
+        Imprime todos los vehículos registrados, mostrando sus características
+        como marca, modelo, año, kilometraje, estado actual y tipo de combustible.
+        """
+        if not self.vehiculos:
+            print("No hay vehículos registrados.")
+            return
+
+        print("Lista de vehículos registrados:")
+        for vehiculo in self.vehiculos:
+            print(
+                f"\nMarca: {vehiculo.get_marca()}, "
+                f"\nModelo: {vehiculo.get_modelo()}, "
+                f"\nAño: {vehiculo.get_año()}, "
+                f"\nKilometraje: {vehiculo.get_kilometraje()} km, "
+                f"\nEstado: {vehiculo.get_estado_actual()}, "
+                f"\nTipo de Combustible: {vehiculo.get_tipo_combustible()}"
+            )
+
+
 def main():
     # Crear una instancia de Main
+    print("\n\n-------Crear una instancia de Main--------")
     sistema_vehiculos = Main()
 
     # Crear algunos vehículos de prueba
+    print("\n\n-------Crear algunos vehículos de prueba--------")
     vehiculo1 = Vehiculo("Toyota", "Corolla", 2020, 25000, "En buen estado", "Gasolina")
     vehiculo2 = Vehiculo("Honda", "Civic", 2020, 30000, "En buen estado", "Gasolina")
     vehiculo3 = Vehiculo("Ford", "Mustang", 2018, 15000, "En muy buen estado", "Gasolina")
 
     # Agregar vehículos al sistema
+    print("\n\n-------Agregar vehículos al sistema--------")
     sistema_vehiculos.agregar_vehiculo(vehiculo1)
     sistema_vehiculos.agregar_vehiculo(vehiculo2)
     sistema_vehiculos.agregar_vehiculo(vehiculo3)
 
     # Buscar vehículos por año
+    print("\n\n-------Buscar vehículos por año--------")
     sistema_vehiculos.buscar_vehiculos_por_año(2020)
     sistema_vehiculos.buscar_vehiculos_por_año(2019)
 
+    print("\n\n-------Ejemplo vehiculo invalido--------")
     try:
         Vehiculo("Toyota", "Corolla", 2020, 25000, "En buen estado", "Agua") # Ejemplo vehiculo invalido
     except ValueError as e:
@@ -82,6 +108,10 @@ def main():
 
     sistema_vehiculos.agregar_vehiculo(vehiculo_valido)
     sistema_vehiculos.buscar_vehiculos_por_año(2021)
+
+    # Imprimir todos los vehículos registrados
+    print("\n\n-------Imprimir todos los vehículos registrados--------")
+    sistema_vehiculos.imprimir_vehiculos_registrados()
 
 if __name__ == "__main__":
     main()
