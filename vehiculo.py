@@ -18,11 +18,13 @@ class Vehiculo:
         Tipo de combustible que usa el vehículo (e.g., "Gasolina", "Diesel", "Eléctrico").
     color : str
         Color del vehículo.
+    potencia : int
+        Potencia del vehículo en caballos de fuerza (HP).
     """
 
     TIPOS_COMBUSTIBLE_VALIDOS = {"Gasolina", "Diesel", "Eléctrico"}
 
-    def __init__(self, marca, modelo, año, kilometraje, estado_actual, tipo_combustible, color):
+    def __init__(self, marca, modelo, año, kilometraje, estado_actual, tipo_combustible, color, potencia):
         """
         Inicializa una nueva instancia de la clase Vehiculo.
 
@@ -42,6 +44,8 @@ class Vehiculo:
             Tipo de combustible que usa el vehículo.
         color : str
             Color del vehículo.
+        potencia : int
+            Potencia del vehículo en caballos de fuerza (HP).
 
         Lanza:
         ------
@@ -55,6 +59,7 @@ class Vehiculo:
         self._estado_actual = estado_actual
         self.set_tipo_combustible(tipo_combustible)
         self._color = color
+        self._potencia = potencia
 
     # Getters
     def get_marca(self):
@@ -126,6 +131,10 @@ class Vehiculo:
     def get_color(self):
         """Obtiene el color del vehículo."""
         return self._color
+
+    def get_potencia(self):
+        """Obtiene la potencia del vehículo en caballos de fuerza (HP)."""
+        return self._potencia
 
     # Setters
     def set_marca(self, marca):
@@ -207,3 +216,7 @@ class Vehiculo:
     def set_color(self, color):
         """Establece el color del vehículo."""
         self._color = color
+
+    def set_potencia(self, potencia):
+        """Establece la potencia del vehículo en caballos de fuerza (HP)."""
+        self._potencia = potencia
