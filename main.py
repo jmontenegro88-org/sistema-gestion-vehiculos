@@ -72,5 +72,16 @@ def main():
     sistema_vehiculos.buscar_vehiculos_por_año(2020)
     sistema_vehiculos.buscar_vehiculos_por_año(2019)
 
+    try:
+        Vehiculo("Toyota", "Corolla", 2020, 25000, "En buen estado", "Agua") # Ejemplo vehiculo invalido
+    except ValueError as e:
+        print('Error:', e)
+
+    vehiculo_valido = Vehiculo("Honda", "Civic", 2021, 15000, "En buen estado", "Gasolina")
+    print(f"Vehículo creado con tipo de combustible: {vehiculo_valido.get_tipo_combustible()}")
+
+    sistema_vehiculos.agregar_vehiculo(vehiculo_valido)
+    sistema_vehiculos.buscar_vehiculos_por_año(2021)
+
 if __name__ == "__main__":
     main()

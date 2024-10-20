@@ -15,8 +15,10 @@ class Vehiculo:
     estado_actual : str
         Estado actual del vehículo (e.g., "En buen estado", "Necesita mantenimiento").
     tipo_combustible : str
-        Tipo de combustible que usa el vehículo (e.g., "Gasolina", "Diésel").
+        Tipo de combustible que usa el vehículo (e.g., "Gasolina", "Diesel", "Eléctrico").
     """
+
+    TIPOS_COMBUSTIBLE_VALIDOS = {"Gasolina", "Diesel", "Eléctrico"}
 
     def __init__(self, marca, modelo, año, kilometraje, estado_actual, tipo_combustible):
         """
@@ -36,13 +38,18 @@ class Vehiculo:
             Estado actual del vehículo.
         tipo_combustible : str
             Tipo de combustible que usa el vehículo.
+
+        Lanza:
+        ------
+        ValueError:
+            Si el tipo de combustible no es uno de los valores permitidos.
         """
         self._marca = marca
         self._modelo = modelo
         self._año = año
         self._kilometraje = kilometraje
         self._estado_actual = estado_actual
-        self._tipo_combustible = tipo_combustible
+        self.set_tipo_combustible(tipo_combustible)
 
     # Getters
     def get_marca(self):
@@ -175,5 +182,15 @@ class Vehiculo:
         -----------
         tipo_combustible : str
             El nuevo tipo de combustible del vehículo.
+
+        Lanza:
+        ------
+        ValueError:
+            Si el tipo de combustible no es uno de los valores permitidos.
         """
+        if tipo_combustible not in self.TIPOS_COMBUSTIBLE_VALIDOS:
+            raise ValueError(
+                f"Tipo de combustible inválido: {tipo_combustible}. "
+                f"Debe ser uno de: {', '.join(self.TIPOS_COMBUSTIBLE_VALIDOS)}."
+            )
         self._tipo_combustible = tipo_combustible
