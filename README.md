@@ -68,3 +68,65 @@ python main.py
 ## Contribución
 
 Cada integrante del grupo ha colaborado en diferentes partes del proyecto, usando Git para el control de versiones, lo que ha permitido el desarrollo paralelo y la resolución de conflictos de manera eficiente.
+
+## Ejemplos de Uso
+
+### Calcular la Antigüedad de un Vehículo
+
+La antigüedad de un vehículo se calcula utilizando el año actual y el año de fabricación del vehículo.
+
+```python
+from datetime import datetime
+
+def calcular_antiguedad(vehiculo):
+    año_actual = datetime.now().year
+    return año_actual - vehiculo.get_año()
+
+# Ejemplo de uso:
+vehiculo = Vehiculo("Toyota", "Corolla", 2020, 25000, "En buen estado", "Gasolina")
+antiguedad = calcular_antiguedad(vehiculo)
+print(f"La antigüedad del vehículo {vehiculo.get_marca()} {vehiculo.get_modelo()} es de {antiguedad} años.")
+```
+
+### Ahora puedes buscar vehículos fabricados antes o después de un año específico utilizando los siguientes métodos:
+
+#### Buscar Vehículos Fabricados Antes o Después de un Año
+
+Para buscar vehículos que sean fabricados después de un año específico:
+
+```python
+# Buscar vehículos fabricados después del año 2019
+sistema_vehiculos.buscar_vehiculos_mayores_a(2019)
+# Buscar vehículos fabricados antes del año 2020
+sistema_vehiculos.buscar_vehiculos_menores_a(2020)
+```
+## Atributos de Vehículo
+
+Cada instancia de la clase `Vehiculo` cuenta con los siguientes atributos:
+
+- **Marca**: Marca del vehículo (e.g., "Toyota").
+- **Modelo**: Modelo del vehículo (e.g., "Corolla").
+- **Año**: Año de fabricación del vehículo.
+- **Kilometraje**: Kilometraje recorrido por el vehículo.
+- **Estado Actual**: Estado actual del vehículo (e.g., "En buen estado").
+- **Tipo de Combustible**: Tipo de combustible utilizado por el vehículo (e.g., "Gasolina", "Diesel", "Eléctrico").
+- **Color**: Color del vehículo (e.g., "Rojo").
+- **Potencia**: Potencia del vehículo en caballos de fuerza (HP) (e.g., 150).
+
+### Ejemplo de Uso
+
+```python
+# Crear una instancia de Vehiculo con el nuevo atributo 'color'
+vehiculo = Vehiculo(
+    marca="Toyota",
+    modelo="Corolla",
+    año=2020,
+    kilometraje=25000,
+    estado_actual="En buen estado",
+    tipo_combustible="Gasolina",
+    color="Rojo",
+    potencia=150
+)
+
+# Obtener el color del vehículo
+print(f"El color del vehículo es: {vehiculo.get_color()}")
