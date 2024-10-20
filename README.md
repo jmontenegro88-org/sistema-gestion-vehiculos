@@ -86,4 +86,17 @@ def calcular_antiguedad(vehiculo):
 vehiculo = Vehiculo("Toyota", "Corolla", 2020, 25000, "En buen estado", "Gasolina")
 antiguedad = calcular_antiguedad(vehiculo)
 print(f"La antigüedad del vehículo {vehiculo.get_marca()} {vehiculo.get_modelo()} es de {antiguedad} años.")
-````
+```
+
+### Ahora puedes buscar vehículos fabricados antes o después de un año específico utilizando los siguientes métodos:
+
+#### Buscar Vehículos Fabricados Antes o Después de un Año
+
+Para buscar vehículos que sean fabricados después de un año específico:
+
+```python
+# Buscar vehículos fabricados después del año 2019
+sistema_vehiculos.buscar_vehiculos_mayores_a(2019)
+# Buscar vehículos fabricados antes del año 2020
+sistema_vehiculos.buscar_vehiculos_menores_a(2020)
+```
