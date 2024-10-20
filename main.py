@@ -1,9 +1,10 @@
 from vehiculo import Vehiculo
+from datetime import datetime
 
 class Main:
     """
     Clase que gestiona una lista de vehículos, permitiendo agregar vehículos,
-    buscarlos por año e imprimir todos los vehículos registrados.
+    buscarlos por año o rango de años e imprimir todos los vehículos registrados.
 
     Atributos:
     ----------
@@ -54,6 +55,35 @@ class Main:
 
         return vehiculos_encontrados
 
+    def buscar_vehiculos_por_rango(self, año_inicio, año_fin):
+        """
+        Busca y retorna una lista de vehículos fabricados dentro de un rango de años.
+
+        Parámetros:
+        -----------
+        año_inicio : int
+            El año inicial del rango de búsqueda.
+        año_fin : int
+            El año final del rango de búsqueda.
+
+        Retorna:
+        --------
+        list
+            Una lista de instancias de la clase Vehiculo fabricadas dentro del rango especificado.
+        """
+        vehiculos_encontrados = [
+            v for v in self.vehiculos if año_inicio <= v.get_año() <= año_fin
+        ]
+        
+        if vehiculos_encontrados:
+            print(f"Se encontraron {len(vehiculos_encontrados)} vehículos entre {año_inicio} y {año_fin}:")
+            for vehiculo in vehiculos_encontrados:
+                print(f"- {vehiculo.get_marca()} {vehiculo.get_modelo()} (Año: {vehiculo.get_año()}, Kilometraje: {vehiculo.get_kilometraje()} km)")
+        else:
+            print(f"No se encontraron vehículos entre {año_inicio} y {año_fin}.")
+
+        return vehiculos_encontrados
+
     def imprimir_vehiculos_registrados(self):
         """
         Imprime todos los vehículos registrados, mostrando sus características
@@ -65,15 +95,33 @@ class Main:
 
         print("Lista de vehículos registrados:")
         for vehiculo in self.vehiculos:
+            antiguedad = self.calcular_antiguedad(vehiculo)
             print(
                 f"\nMarca: {vehiculo.get_marca()}, "
                 f"\nModelo: {vehiculo.get_modelo()}, "
                 f"\nAño: {vehiculo.get_año()}, "
                 f"\nKilometraje: {vehiculo.get_kilometraje()} km, "
                 f"\nEstado: {vehiculo.get_estado_actual()}, "
-                f"\nTipo de Combustible: {vehiculo.get_tipo_combustible()}"
+                f"\nTipo de Combustible: {vehiculo.get_tipo_combustible()}, "
+                f"\nAntigüedad: {antiguedad} años"
             )
 
+    def calcular_antiguedad(self, vehiculo):
+        """
+        Calcula la antigüedad de un vehículo basado en el año de fabricación.
+
+        Parámetros:
+        -----------
+        vehiculo : Vehiculo
+            Una instancia de la clase Vehiculo.
+
+        Retorna:
+        --------
+        int
+            La antigüedad del vehículo en años.
+        """
+        año_actual = datetime.now().year
+        return año_actual - vehiculo.get_año()
 
 def main():
     # Crear una instancia de Main
@@ -112,6 +160,10 @@ def main():
     # Imprimir todos los vehículos registrados
     print("\n\n-------Imprimir todos los vehículos registrados--------")
     sistema_vehiculos.imprimir_vehiculos_registrados()
+
+    # Buscar vehículos en un rango de años
+    print("\n\n-------Buscar vehículos en un rango de años--------")
+    sistema_vehiculos.buscar_vehiculos_por_rango(2019, 2021)
 
 if __name__ == "__main__":
     main()
