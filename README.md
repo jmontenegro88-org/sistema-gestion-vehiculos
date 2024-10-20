@@ -68,3 +68,22 @@ python main.py
 ## Contribución
 
 Cada integrante del grupo ha colaborado en diferentes partes del proyecto, usando Git para el control de versiones, lo que ha permitido el desarrollo paralelo y la resolución de conflictos de manera eficiente.
+
+## Ejemplos de Uso
+
+### Calcular la Antigüedad de un Vehículo
+
+La antigüedad de un vehículo se calcula utilizando el año actual y el año de fabricación del vehículo.
+
+```python
+from datetime import datetime
+
+def calcular_antiguedad(vehiculo):
+    año_actual = datetime.now().year
+    return año_actual - vehiculo.get_año()
+
+# Ejemplo de uso:
+vehiculo = Vehiculo("Toyota", "Corolla", 2020, 25000, "En buen estado", "Gasolina")
+antiguedad = calcular_antiguedad(vehiculo)
+print(f"La antigüedad del vehículo {vehiculo.get_marca()} {vehiculo.get_modelo()} es de {antiguedad} años.")
+````
