@@ -111,6 +111,7 @@ Cada instancia de la clase `Vehiculo` cuenta con los siguientes atributos:
 - **Estado Actual**: Estado actual del vehículo (e.g., "En buen estado").
 - **Tipo de Combustible**: Tipo de combustible utilizado por el vehículo (e.g., "Gasolina", "Diesel", "Eléctrico").
 - **Color**: Color del vehículo (e.g., "Rojo").
+- **Potencia**: Potencia del vehículo en caballos de fuerza (HP) (e.g., 150).
 
 ### Ejemplo de Uso
 
@@ -123,7 +124,8 @@ vehiculo = Vehiculo(
     kilometraje=25000,
     estado_actual="En buen estado",
     tipo_combustible="Gasolina",
-    color="Rojo"
+    color="Rojo",
+    potencia=150
 )
 
 # Obtener el color del vehículo

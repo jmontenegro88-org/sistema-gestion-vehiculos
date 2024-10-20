@@ -155,6 +155,7 @@ class Main:
                 f"\nEstado: {vehiculo.get_estado_actual()}, "
                 f"\nTipo de Combustible: {vehiculo.get_tipo_combustible()}, "
                 f"\nColor: {vehiculo.get_color()}, "
+                f"\nPotencia: {vehiculo.get_potencia()}, "
                 f"\nAntigüedad: {antiguedad} años"
             )
 
@@ -182,9 +183,9 @@ def main():
 
     # Crear algunos vehículos de prueba
     print("\n\n-------Crear algunos vehículos de prueba--------")
-    vehiculo1 = Vehiculo("Toyota", "Corolla", 2020, 25000, "En buen estado", "Gasolina", "Rojo")
-    vehiculo2 = Vehiculo("Honda", "Civic", 2020, 30000, "En buen estado", "Gasolina", "Azul")
-    vehiculo3 = Vehiculo("Ford", "Mustang", 2018, 15000, "En muy buen estado", "Gasolina", "Negro")
+    vehiculo1 = Vehiculo("Toyota", "Corolla", 2020, 25000, "En buen estado", "Gasolina", "Rojo", 200)
+    vehiculo2 = Vehiculo("Honda", "Civic", 2020, 30000, "En buen estado", "Gasolina", "Azul", 250)
+    vehiculo3 = Vehiculo("Ford", "Mustang", 2018, 15000, "En muy buen estado", "Gasolina", "Negro", 300)
 
     # Agregar vehículos al sistema
     print("\n\n-------Agregar vehículos al sistema--------")
@@ -199,11 +200,11 @@ def main():
 
     print("\n\n-------Ejemplo vehiculo invalido--------")
     try:
-        Vehiculo("Toyota", "Corolla", 2020, 25000, "En buen estado", "Agua", "Amarillo") # Ejemplo vehiculo invalido
+        Vehiculo("Toyota", "Corolla", 2020, 25000, "En buen estado", "Agua", "Amarillo", 150) # Ejemplo vehiculo invalido
     except ValueError as e:
         print('Error:', e)
 
-    vehiculo_valido = Vehiculo("Honda", "Civic", 2021, 15000, "En buen estado", "Gasolina", "Gris")
+    vehiculo_valido = Vehiculo("Honda", "Civic", 2021, 15000, "En buen estado", "Gasolina", "Gris", 120)
     print(f"Vehículo creado con tipo de combustible: {vehiculo_valido.get_tipo_combustible()}")
 
     sistema_vehiculos.agregar_vehiculo(vehiculo_valido)
