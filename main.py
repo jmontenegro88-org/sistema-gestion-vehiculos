@@ -4,7 +4,8 @@ from datetime import datetime
 class Main:
     """
     Clase que gestiona una lista de vehículos, permitiendo agregar vehículos,
-    buscarlos por año o rango de años e imprimir todos los vehículos registrados.
+    buscarlos por año, rango de años, mayores o menores a un año específico,
+    e imprimir todos los vehículos registrados.
 
     Atributos:
     ----------
@@ -81,6 +82,56 @@ class Main:
                 print(f"- {vehiculo.get_marca()} {vehiculo.get_modelo()} (Año: {vehiculo.get_año()}, Kilometraje: {vehiculo.get_kilometraje()} km)")
         else:
             print(f"No se encontraron vehículos entre {año_inicio} y {año_fin}.")
+
+        return vehiculos_encontrados
+    
+    def buscar_vehiculos_mayores_a(self, año):
+        """
+        Busca y retorna una lista de vehículos fabricados después del año especificado.
+
+        Parámetros:
+        -----------
+        año : int
+            El año a partir del cual se desea buscar vehículos.
+
+        Retorna:
+        --------
+        list
+            Una lista de instancias de la clase Vehiculo fabricadas después del año especificado.
+        """
+        vehiculos_encontrados = [v for v in self.vehiculos if v.get_año() > año]
+        
+        if vehiculos_encontrados:
+            print(f"Se encontraron {len(vehiculos_encontrados)} vehículos fabricados después del año {año}:")
+            for vehiculo in vehiculos_encontrados:
+                print(f"- {vehiculo.get_marca()} {vehiculo.get_modelo()} (Año: {vehiculo.get_año()})")
+        else:
+            print(f"No se encontraron vehículos fabricados después del año {año}.")
+
+        return vehiculos_encontrados
+
+    def buscar_vehiculos_menores_a(self, año):
+        """
+        Busca y retorna una lista de vehículos fabricados antes del año especificado.
+
+        Parámetros:
+        -----------
+        año : int
+            El año límite hasta el cual se desea buscar vehículos.
+
+        Retorna:
+        --------
+        list
+            Una lista de instancias de la clase Vehiculo fabricadas antes del año especificado.
+        """
+        vehiculos_encontrados = [v for v in self.vehiculos if v.get_año() < año]
+        
+        if vehiculos_encontrados:
+            print(f"Se encontraron {len(vehiculos_encontrados)} vehículos fabricados antes del año {año}:")
+            for vehiculo in vehiculos_encontrados:
+                print(f"- {vehiculo.get_marca()} {vehiculo.get_modelo()} (Año: {vehiculo.get_año()})")
+        else:
+            print(f"No se encontraron vehículos fabricados antes del año {año}.")
 
         return vehiculos_encontrados
 
@@ -164,6 +215,14 @@ def main():
     # Buscar vehículos en un rango de años
     print("\n\n-------Buscar vehículos en un rango de años--------")
     sistema_vehiculos.buscar_vehiculos_por_rango(2019, 2021)
+
+    # Buscar vehículos mayores a un año específico
+    print("\n\n-------Buscar vehículos mayores a un año específico--------")
+    sistema_vehiculos.buscar_vehiculos_mayores_a(2019)
+
+    # Buscar vehículos menores a un año específico
+    print("\n\n-------Buscar vehículos menores a un año específico--------")
+    sistema_vehiculos.buscar_vehiculos_menores_a(2020)
 
 if __name__ == "__main__":
     main()
